@@ -1,17 +1,21 @@
 
 # 🧊 Cube 3D Controller (Full Stack App)
 
-This project allows users to interact with a 3D cube rendered in the browser. Users can rotate, move, save, and reset the cube. All state changes are synced with a MongoDB database using a backend API.
+
+This project allows users to interact with one or two 3D cubes rendered in the browser. Users can add/remove a second cube, and for each cube, rotate, move, save, and reset its state. All state changes are synced with a MongoDB database using a backend API.
 
 ---
 
+
 ## 📦 Features
 
-- 3D cube rendered with Three.js
-- Rotate cube using slider
-- Move cube with directional buttons
-- Save cube's position and rotation speed to MongoDB
-- Reset cube to original state
+- 3D cubes rendered with Three.js (supports up to 2 cubes)
+- Add or remove a second cube (Box 2) dynamically
+- Each cube can be rotated using its own slider
+- Move each cube with its own directional buttons
+- Save each cube's position and rotation speed to MongoDB
+- Reset each cube to its original state
+- Focus camera on either cube with dedicated buttons
 - Full-stack: frontend + backend + database
 - Deployed using Render
 
@@ -28,6 +32,7 @@ This project allows users to interact with a 3D cube rendered in the browser. Us
 | **Deployment**| Render.com                      | Easy full-stack hosting |
 
 ---
+
 
 ## 🚀 Live Links
 
@@ -46,6 +51,7 @@ git clone https://github.com/yourusername/cube3d
 cd cube3d
 ```
 
+
 ### 2. Backend Setup (`/backend`)
 
 ```bash
@@ -59,12 +65,14 @@ MONGO_URI=your-mongo-db-uri
 PORT=5000
 ```
 
+
 Start backend:
 ```bash
 node server.js
 ```
 
 ---
+
 
 ### 3. Frontend Setup (`/cubeassi`)
 
@@ -83,19 +91,41 @@ Start frontend:
 npm run dev
 ```
 
+
 Now open `http://localhost:5173` in your browser.
 
 ---
 
+## 🆕 Second Cube (Box 2) Feature
+
+- Click the **Add Box** button to add a second cube (Box 2) to the scene. The button toggles to **Remove Box** to remove it.
+- Box 2 has its own set of controls for moving, rotating, saving, resetting, and focusing the camera.
+- Box 2's state is also synced with the backend and MongoDB.
+
+### Box 2 Controls
+
+- **Add/Remove Box**: Toggle the presence of the second cube.
+- **Directional Buttons**: Move Box 2 within the scene.
+- **Rotation Slider**: Adjust Box 2's rotation speed.
+- **Save**: Save Box 2's position and rotation speed to the backend.
+- **Reset**: Reset Box 2 to its default state (position and rotation).
+- **Focus**: Move the camera to focus on Box 2.
+
+---
+
+---
+
+
 ## 📡 API Documentation
 
-### GET `/api/cubes/cube_1`
 
-- **Description**: Returns current position and rotation speed of the cube.
+### GET `/api/cubes/cube_1` and `/api/cubes/cube_2`
+
+- **Description**: Returns current position and rotation speed of the specified cube (`cube_1` or `cube_2`).
 - **Response**:
 ```json
 {
-  "cubeId": "cube_1",
+  "cubeId": "cube_1" | "cube_2",
   "position": { "x": 0, "y": 0, "z": 0 },
   "rotationSpeed": 0.01,
   "updatedAt": "timestamp",
@@ -105,9 +135,9 @@ Now open `http://localhost:5173` in your browser.
 
 ---
 
-### POST `/api/cubes/cube_1/save`
+### POST `/api/cubes/cube_1/save` and `/api/cubes/cube_2/save`
 
-- **Description**: Saves current position and rotation speed of cube.
+- **Description**: Saves current position and rotation speed of the specified cube.
 - **Body**:
 ```json
 {
@@ -124,9 +154,9 @@ Now open `http://localhost:5173` in your browser.
 
 ---
 
-### POST `/api/cubes/cube_1/reset`
+### POST `/api/cubes/cube_1/reset` and `/api/cubes/cube_2/reset`
 
-- **Description**: Resets cube state to default.
+- **Description**: Resets the specified cube state to default.
 - **Response**:
 ```json
 { "message": "Cube reset to default state" }
