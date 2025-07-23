@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+<body>
+    <h1>Cube Controller</h1>
+    <button id="add-box">Add Box</button>
+    <h3 id="message"></h3>
+    <div id="box_area"></div>
+
+
+    <!-- Controllers Panel: Both cubes side by side -->
+    <div id="controllers-panel" style="display: flex; justify-content: space-between; gap: 32px; margin-top: 16px;">
+      <!-- Cube 1 Controls (left) -->
+      <div id="controllers1" class="controllers" style="flex:1; min-width: 220px;">
+        <h2 style="color: white;">Cube 1 Controls</h2>
+        <label>Speed/Rotation: <input type="range" id="rotation1" min="0" max="0.1" step="0.01" value="0"></label>
+        <button id="reset1">Reset</button>
+        <button id="save1">Save</button>
+        <button id="focus1">Focus</button>
+        <div style="margin-top:8px; text-align: center;">
+          <button id="up1">&#8593;</button>
+        <div style="text-align: center;" id="middle2"> 
+          <button id="left1">&#8592;</button>
+          <button id="right1">&#8594;</button>
+           </div>
+          
+          <button id="down1">&#8595;</button>
+        </div>
+      </div>
+
+      <!-- Cube 2 Controls (right, hidden by default) -->
+      <div id="controllers2" class="controllers" style="flex:1; min-width: 220px; display:none">
+        <h2 style="color: white;">Cube 2 Controls</h2>
+        <label>Speed/Rotation: <input type="range" id="rotation2" min="0" max="0.1" step="0.01" value="0"></label>
+        <button id="reset2">Reset</button>
+        <button id="save2">Save</button>
+        <button id="focus2">Focus</button>
+        <div style="margin-top:8px; text-align: center;">
+          
+          <button id="up2">&#8593;</button>
+          <div style="text-align: center;" id="middle2"> 
+         
+          <button id="left2">&#8592;</button>
+          <button id="right2">&#8594;</button>
+          </div>
+          <button id="down2">&#8595;</button>
+          
+        </div>
+      </div>
+    </div>
+
+    <script type="module"  src="/src/main.js"></script>
+</body>
+
+
+
+</html>
